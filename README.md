@@ -38,16 +38,19 @@ pip install -r requirements.txt
 streamlit run app.py
 ```
 
-**Avant le premier lancement**, générer l'historique utilisé par la page 2
-(téléchargement de l'archive officielle 2026 puis conversion en Parquet, quelques minutes) :
+### Historique (page 2)
+
+Le fichier `data/historique_2026.parquet` est **fourni dans le dépôt** : l'application
+fonctionne directement, en local comme sur Streamlit Community Cloud.
+
+Il est produit par `scripts/prepare_historique.py`, qui télécharge l'archive annuelle officielle
+(ZIP contenant un XML) puis la convertit en Parquet. La relancer met l'historique à jour :
 
 ```bash
 python scripts/prepare_historique.py
 ```
 
-Le fichier `data/historique_2026.parquet` n'est pas versionné : il se recrée avec ce script,
-et le relancer met l'historique à jour (l'archive de l'année en cours grossit chaque jour).
-Les pages 1 et 3 fonctionnent sans lui : elles interrogent directement l'API du flux quotidien.
+Les pages 1 et 3 n'utilisent pas ce fichier : elles interrogent directement l'API du flux quotidien.
 
 ## Structure
 
@@ -64,7 +67,7 @@ Les pages 1 et 3 fonctionnent sans lui : elles interrogent directement l'API du 
 ├── scripts/
 │   └── prepare_historique.py   Création de l'historique 2026 en Parquet
 └── data/
-    └── historique_2026.parquet  (généré, non versionné)
+    └── historique_2026.parquet  (généré par le script, fourni)
 ```
 
 ## Choix techniques
