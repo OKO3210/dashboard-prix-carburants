@@ -1,0 +1,24 @@
+# Environnement virtuel Python (se recrée avec requirements.txt)
+env/
+venv/
+.venv/
+
+# Fichiers compilés Python
+__pycache__/
+*.pyc
+
+# Données générées par scripts/prepare_historique.py (non versionnées)
+data/*.parquet
+
+# Copies de travail locales
+_sauvegarde_avant_corrections/
+data/export_quotidien_*.csv
+
+# Secrets Streamlit (ne jamais publier)
+.streamlit/secrets.toml
+
+# Fichiers système / éditeurs
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
